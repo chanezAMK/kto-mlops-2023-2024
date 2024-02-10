@@ -1,55 +1,39 @@
-message = "C'est mon premier script !!!"
-print(message)
-je_change_de_type = 1
-print(type(je_change_de_type))
-je_change_de_type = "coucou"
-print(type(je_change_de_type))
-prenoms = ["Guillaume", "Gilles", "Juliette", "Antoine", "François", "Cassandre"]
-more_than_seven = 0 
-for prenom in prenoms:
-    if len(prenom) > 7:
-        more_than_seven += 1
-        print("Prenom supérieur à 7 : " + prenom)
-    else:
-        print("Prenom inférieur ou égal à 7 : " + prenom)
-print("Nombre de prénoms supérieurs à 7 : " + str(more_than_seven))
-
-
-"""
-Count names with more than seven letters
-"""
-def names(prenoms):
-    more_than_seven = 0
-    for prenom in prenoms:
-        if len(prenom) > 7:
-            more_than_seven += 1
-            print("Prenom supérieur à 7 : " + prenom)
-        else:
-            print("Prenom inférieur ou égal à 7 : " + prenom)
-    return more_than_seven
-
-prenoms = ["Guillaume", "Gilles", "Juliette", "Antoine", "François", "Cassandre"]
-print("Nombre de prénoms supérieurs à 7 : " + str(names(prenoms=prenoms)))
 import unittest
 
-"""
-Count names with more than seven letters
-"""
-def names(prenoms):
-    more_than_seven = 0
-    for prenom in prenoms:
-        if len(prenom) > 7:
-            more_than_seven += 1
-            print("Prenom supérieur à 7 : " + prenom)
+def more_than_seven_letters(names: list[str], max_character_count: int = 7) -> int:
+    """
+    Counts the number of names with more than 'max_character_count' characters.
+
+    Args:
+    - names: List of names to evaluate.
+    - max_character_count: Maximum character count threshold.
+
+    Returns:
+    - Number of names exceeding the specified maximum character count.
+    """
+    count_above_threshold = 0
+    for name in names:
+        if len(name) > max_character_count:
+            count_above_threshold += 1
+            print(f"Name exceeds {max_character_count} characters: {name}")
         else:
-            print("Prenom inférieur ou égal à 7 : " + prenom)
-    return more_than_seven
+            print(f"Name is less than or equal to {max_character_count} characters: {name}")
+    return count_above_threshold
+
 
 class TestNamesMethod(unittest.TestCase):
-     def test_names(self):
-        prenoms = ["Guillaume", "Gilles", "Juliette", "Antoine", "François", "Cassandre"]
-        more_than_seven = names(prenoms=prenoms)
-        self.assertEqual(more_than_seven, 4)
+    def test_names_with_length_above_threshold(self):
+        # List of names to test
+        names_list = ["Guillaume", "Gilles", "Juliette", "Antoine", "François", "Cassandre"]
+        
+        # Call the function with the list of names and a new maximum character count threshold
+        count_above_threshold = more_than_seven_letters(names=names_list, max_character_count=8)  # Change the value of max_character_count as needed
+        
+        # Expected value for the number of names exceeding the threshold
+        expected_count = 4
+
+        # Verify that the obtained result matches the expected value
+        self.assertEqual(count_above_threshold, expected_count)
 
 if __name__ == '__main__':
     unittest.main()

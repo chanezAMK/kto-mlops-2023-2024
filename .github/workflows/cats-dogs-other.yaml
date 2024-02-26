@@ -2,7 +2,7 @@ name: Cats and dogs CI/CD
 on:
   push:
     branches:
-      -chanezAMk/step03
+      - chanezAMk/step03
       
 jobs:
   train:

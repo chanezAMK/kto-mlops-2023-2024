@@ -3,6 +3,7 @@ on:
   push:
     branches:
       -chanezAMk/step03
+      
 jobs:
   train:
     runs-on: ubuntu-latest

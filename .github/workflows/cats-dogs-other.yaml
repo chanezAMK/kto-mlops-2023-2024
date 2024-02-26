@@ -2,8 +2,7 @@ name: Cats and dogs CI/CD
 on:
   push:
     branches:
-      - step**
-
+      -chanezAMk
 jobs:
   train:
     runs-on: ubuntu-latest
